@@ -1,5 +1,6 @@
 class ApplicationController
   module Authentication
+  private
     
     attr_reader :logged_in_user
     
@@ -14,6 +15,10 @@ class ApplicationController
     
     def log_in(user)
       session[:logged_in_user_id] = user.id
+    end
+    
+    def log_out
+      session[:logged_in_user_id] = nil
     end
     
   end

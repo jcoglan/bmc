@@ -24,6 +24,8 @@ Spork.prefork do
     config.mode = :rails
     config.open_error_files = false # Set to true if you want error pages to pop up in the browser
   end
+  
+  require 'factory_girl'
 end
  
 Spork.each_run do

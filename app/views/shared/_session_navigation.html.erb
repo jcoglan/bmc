@@ -1,0 +1,14 @@
+<div class="session-navigation">
+<% if logged_in_user -%>
+  Logged in as <%= logged_in_user.username %>
+  <ul>
+    <li><%= button_to "Log out", session_path(:current), :method => 'delete' %></li>
+  </ul>
+<% else -%>
+  <ul>
+    <li><%= link_to "Log in", new_session_path %></li>
+    <li><%= link_to "Sign up", new_user_path %></li>
+  </ul>
+<% end -%>
+</div>
+

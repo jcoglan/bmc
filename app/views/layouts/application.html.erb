@@ -7,9 +7,7 @@
   <body>
     
     <div class="navigation">
-      <ul>
-        <li><%= link_to "Sign up", new_user_path %></li>
-      </ul>
+      <%= render :partial => 'shared/session_navigation' %>
     </div>
     
     <% if flash[:message] %>
