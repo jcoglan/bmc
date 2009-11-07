@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>A Bit More Complicated</title>
+  </head>
+  <body>
+    
+    <div class="navigation">
+      <ul>
+        <li><%= link_to "Sign up", new_user_path %></li>
+      </ul>
+    </div>
+    
+    <div class="main">
+      
+      <%= yield %>
+      
+    </div>
+    
+  </body>
+</html>
+
