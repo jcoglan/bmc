@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/has_password"]
+	path = vendor/plugins/has_password
+	url = git://github.com/jcoglan/has_password.git

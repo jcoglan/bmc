@@ -1,2 +1,12 @@
 <h2>Sign up</h2>
 
+<% form_for @user, new_user_path do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation, "Confirm password" %>
+  <%= f.password_field :password_confirmation %>
+  
+  <%= submit_tag "Sign up" %>
+<% end %>

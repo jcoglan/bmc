@@ -12,6 +12,12 @@
       </ul>
     </div>
     
+    <% if flash[:message] %>
+    <div class="flash-message">
+      <%=h flash[:message] %>
+    </div>
+    <% end %>
+    
     <div class="main">
       
       <%= yield %>
