@@ -18,30 +18,18 @@ Feature: Visitor sign-up
     Then I should be on the home page
     And I should see "Welcome, jcoglan!"
   
-  Scenario: Signing up with a blank username produces an error
+  Scenario Outline: Signing up with invalid data produces an error
     Given I am on the sign-up page
     When I fill in the following:
-      | Username          |               |
-      | Password          | Frabjous_day  |
-      | Confirm password  | Frabjous_day  |
+      | Username          | <username>      |
+      | Password          | Frabjous_day    |
+      | Confirm password  | <confirmation>  |
     And I press "Sign up"
-    And I should see "Username can't be blank"
-  
-  Scenario: Signing up with an invalid username produces an error
-    Given I am on the sign-up page
-    When I fill in the following:
-      | Username          | Has spaces!   |
-      | Password          | Frabjous_day  |
-      | Confirm password  | Frabjous_day  |
-    And I press "Sign up"
-    And I should see "Username may only contain letters, numbers and underscores"
-  
-  Scenario: Signing up without confirming my password produces an error
-    Given I am on the sign-up page
-    When I fill in the following:
-      | Username          | jcoglan       |
-      | Password          | Frabjous_day  |
-      | Confirm password  | Calloo_callay |
-    And I press "Sign up"
-    And I should see "Password doesn't match confirmation"
- 
+    Then I should see "<error>"
+    Examples:
+      | username    | confirmation  | error                                                       |
+      |             | Frabjous_day  | Username can't be blank                                     |
+      | ty          | Frabjous_day  | Username is too short (minimum is 3 characters)             |
+      | Has spaces! | Frabjous_day  | Username may only contain letters, numbers and underscores  |
+      | jcoglan     | Calloo_callay | Password doesn't match confirmation                         |
+
