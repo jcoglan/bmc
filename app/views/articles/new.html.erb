@@ -1,0 +1,9 @@
+<h2>Add an article</h2>
+
+<% form_for @article do |f| %>
+  <%= hidden_field_tag :temporary, "1" %>
+  <%= f.label :url, "URL" %>
+  <%= f.text_field :url %>
+  <%= submit_tag "Submit" %>
+<% end %>
+

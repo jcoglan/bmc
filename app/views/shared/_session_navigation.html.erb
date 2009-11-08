@@ -2,6 +2,7 @@
 <% if logged_in_user -%>
   Logged in as <%= logged_in_user.username %>
   <ul>
+    <li><%= link_to "Add an article", new_article_path %></li>
     <li><%= button_to "Log out", session_path(:current), :method => 'delete' %></li>
   </ul>
 <% else -%>

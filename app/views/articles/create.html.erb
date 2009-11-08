@@ -1,0 +1,7 @@
+<h2>Edit article: <%= link_to h(@article.title), @article.url %></h2>
+
+<% form_for @article do |f| %>
+  <%= f.hidden_field :url %>
+  <%= submit_tag "Save" %>
+<% end %>
+

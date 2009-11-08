@@ -30,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
 
+  map.resources :articles
   map.resources :sessions
   map.resources :users
 

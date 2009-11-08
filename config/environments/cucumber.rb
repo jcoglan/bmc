@@ -25,3 +25,6 @@ config.gem 'rspec',       :lib => false,        :version => '>=1.2.9' unless Fil
 config.gem 'rspec-rails', :lib => false,        :version => '>=1.2.9' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
 
 config.gem 'spork',       :lib => false,        :version => '>=0.7.3' unless File.directory?(File.join(Rails.root, 'vendor/plugins/spork'))
+
+config.gem 'factory_girl',  :version => '>=1.2.2'
+config.gem 'fakeweb',       :version => '>=1.2.7'

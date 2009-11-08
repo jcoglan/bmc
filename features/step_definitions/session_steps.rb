@@ -1,3 +1,7 @@
+Given /^I am logged in$/ do
+  Given 'I am logged in as "anonymous"'
+end
+
 Given /^I am logged in as "([^\"]*)"$/ do |username|
   Given "there is a User \"#{username}\" with password \"generic\""
   visit path_to("the login page")
