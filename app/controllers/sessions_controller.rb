@@ -9,12 +9,12 @@ class SessionsController < ApplicationController
     
     unless @user
       flash[:error] = "Unknown user '#{params[:username]}'"
-      return redirect_to :action => 'new'
+      return redirect_to(:action => 'new')
     end
     
     unless @user.has_password?(params[:password])
       flash[:error] = "Incorrect password"
-      return redirect_to :action => 'new'
+      return redirect_to(:action => 'new')
     end
     
     log_in(@user)
