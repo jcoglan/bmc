@@ -37,6 +37,18 @@ Feature: Users can add articles
     And I press "Submit"
     Then I should see "Sexy science: unleashing the power of the code"
     And I should see "The Times" within ".sources"
+    And the "The Times" checkbox should be checked
+  
+  Scenario: Adding an article with a new source when we already have a source for the domain
+    Given I add an Article from "The Times" with URL "http://www.timesonline.co.uk/tol/news/politics/article6906914.ece"
+    And I go to the new article page
+    When I fill in "URL" with "http://www.timesonline.co.uk/tol/news/science/article6873230.ece"
+    And I press "Submit"
+    And I choose "Other"
+    And I fill in "Source" with "The Telegraph"
+    And I press "Save"
+    Then I should see "Viewing article: Sexy science: unleashing the power of the code"
+    And I should see "From The Telegraph, posted by you" within ".attribution"
   
   Scenario Outline: Adding an article from a registered source
     Given there is a Source called "The Daily Mail" with domain "dailymail.co.uk"

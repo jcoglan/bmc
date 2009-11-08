@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article.user = logged_in_user if @article.new_record?
     @article.attributes = params[:article]
     
-    if ['other', nil].include?(@article.source_id)
+    if ['other', nil].include?(params[:article][:source_id])
       @source = Source.create(params[:source])
       @source.associate_with_domain(@article.url)
       @article.source = @source
