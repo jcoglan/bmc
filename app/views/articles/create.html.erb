@@ -2,19 +2,21 @@
 
 <% form_for @article do |form| %>
   <div class="sources">
-    <% fields_for @article do |f| -%>
-      <ul>
-        <% @sources.each_with_index do |source, i| -%>
+    <% unless @sources.empty? -%>
+      <% fields_for @article do |f| -%>
+        <ul>
+          <% @sources.each_with_index do |source, i| -%>
+            <li>
+              <%= f.radio_button :source_id, source.id, :checked => i.zero? %>
+              <%= f.label "source_id_#{source.id}", h(source.name) %>
+            </li>
+          <% end %>
           <li>
-            <%= f.radio_button :source_id, source.id, :checked => i.zero? %>
-            <%= f.label "source_id_#{source.id}", h(source.name) %>
+            <%= f.radio_button :source_id, "other" %>
+            <%= f.label "source_id_other", "Other" %>
           </li>
-        <% end %>
-        <li>
-          <%= f.radio_button :source_id, "other" %>
-          <%= f.label "source_id_other", "Other" %>
-        </li>
-      </ul>
+        </ul>
+      <% end -%>
     <% end -%>
     
     <% fields_for @source do |f| -%>

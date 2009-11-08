@@ -24,7 +24,7 @@ Feature: Users can add articles
     And I fill in "URL" with "http://www.timesonline.co.uk/tol/news/politics/article6906914.ece"
     And I press "Submit"
     Then I should see "Edit article: Science Minister renews attack over adviser's sacking"
-    When I choose "Other"
+    And I should not see "Other" within ".sources"
     And I fill in "Source" with "The Times"
     When I press "Save"
     Then I should see "Viewing article: Science Minister renews attack over adviser's sacking"
