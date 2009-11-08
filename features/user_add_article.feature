@@ -30,6 +30,14 @@ Feature: Users can add articles
     Then I should see "Viewing article: Science Minister renews attack over adviser's sacking"
     And I should see "From The Times, posted by you" within ".attribution"
   
+  Scenario: Adding an article from a new source associates the source with the domain
+    Given I add an Article from "The Times" with URL "http://www.timesonline.co.uk/tol/news/politics/article6906914.ece"
+    And I go to the new article page
+    When I fill in "URL" with "http://www.timesonline.co.uk/tol/news/science/article6873230.ece"
+    And I press "Submit"
+    Then I should see "Sexy science: unleashing the power of the code"
+    And I should see "The Times" within ".sources"
+  
   Scenario Outline: Adding an article from a registered source
     Given there is a Source called "The Daily Mail" with domain "dailymail.co.uk"
     And there is a Source called "Mail on Sunday" with domain "dailymail.co.uk"

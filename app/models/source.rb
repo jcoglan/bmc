@@ -4,8 +4,12 @@ class Source < ActiveRecord::Base
   has_many :articles
   
   def self.search_by_url(url)
-    host = URI.parse(url).host.gsub(/^www\./, '')
-    Domain.find_all_by_host(host).map(&:sources).flatten
+    Domain.search_by_url(url).map(&:sources).flatten
+  end
+  
+  def associate_with_domain(url)
+    domain = Domain.from_url(url)
+    domains << domain unless domains.include?(domain)
   end
   
 end

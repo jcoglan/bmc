@@ -10,8 +10,12 @@ WEB_FIXTURES = File.expand_path(File.dirname(__FILE__) + '/fixtures/fakeweb')
       Sack-exam-chiefs-over-dumbed-down-science-says-Royal-Society-of-Chemistry
     ],
   
-  %w[ http://www.timesonline.co.uk/tol/news/politics/article6906914.ece,
+  %w[ http://www.timesonline.co.uk/tol/news/politics/article6906914.ece
       Science-Minister-renews-attack-over-advisers-sacking
+    ],
+  
+  %w[ http://www.timesonline.co.uk/tol/news/science/article6873230.ece
+      Sexy-science-unleashing-the-power-of-the-code
     ]
   
 ].each do |fake_page|

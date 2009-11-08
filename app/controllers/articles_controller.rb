@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
     
     if params[:article][:source_id] == 'other'
       @source = Source.create(params[:source])
+      @source.associate_with_domain(@article.url)
       @article.source = @source
     end
     
