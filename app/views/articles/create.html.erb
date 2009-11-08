@@ -2,6 +2,20 @@
 
 <% form_for @article do |f| %>
   <%= f.hidden_field :url %>
+  
+  <div class="sources">
+    <% unless @sources.empty? -%>
+      <ul>
+      <% @sources.each_with_index do |source, i| -%>
+        <li>
+          <%= f.radio_button :source_id, source.id, :checked => i.zero? %>
+          <%= f.label "source_id_#{source.id}", h(source.name) %>
+        </li>
+      <% end %>
+      </ul>
+    <% end -%>
+  </div>
+  
   <%= submit_tag "Save" %>
 <% end %>
 

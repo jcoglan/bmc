@@ -9,8 +9,13 @@ class ArticlesController < ApplicationController
   
   def create
     @article = Article.from_url(params[:article][:url])
+    @sources = Source.search_by_url(@article.url)
+    return if params[:temporary]
+    
     @article.user = logged_in_user if @article.new_record?
-    return unless !params[:temporary] and @article.save
+    @article.update_attributes(params[:article])
+    return unless @article.save
+    
     redirect_to article_path(@article)
   end
   

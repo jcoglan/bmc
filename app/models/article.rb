@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   
+  belongs_to :source
   belongs_to :user
   
   def self.from_url(url)

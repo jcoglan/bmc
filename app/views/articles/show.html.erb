@@ -1,7 +1,11 @@
 <h2>
   Viewing article: <%= link_to h(@article.title), @article.url %>
   <span class="attribution">
-    Posted by <%= render_user(@article.user) %>
+    <% if @article.source -%>
+      From <%=h @article.source.name %>, posted by <%= render_user(@article.user) %>
+    <% else -%>
+      Posted by <%= render_user(@article.user) %>
+    <% end -%>
   </span>
 </h2>
 

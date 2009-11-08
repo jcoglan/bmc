@@ -9,18 +9,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091108154250) do
+ActiveRecord::Schema.define(:version => 20091108190157) do
 
   create_table "articles", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "source_id"
     t.string   "url"
     t.string   "title"
   end
 
+  add_index "articles", ["source_id"], :name => "index_articles_on_source_id"
   add_index "articles", ["url"], :name => "index_articles_on_url"
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
+
+  create_table "domains", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "host"
+  end
+
+  create_table "domains_sources", :id => false, :force => true do |t|
+    t.integer "domain_id"
+    t.integer "source_id"
+  end
+
+  add_index "domains_sources", ["domain_id"], :name => "index_domains_sources_on_domain_id"
+  add_index "domains_sources", ["source_id"], :name => "index_domains_sources_on_source_id"
+
+  create_table "sources", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "sources", ["name"], :name => "index_sources_on_name"
 
   create_table "users", :force => true do |t|
     t.datetime "created_at"
