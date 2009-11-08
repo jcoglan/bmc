@@ -10,7 +10,8 @@ class ApplicationController
     
     def load_logged_in_user
       id = session[:logged_in_user_id]
-      @logged_in_user = User.find(id) if id
+      @logged_in_user = User.find_by_id(id) if id
+      log_out unless @logged_in_user
     end
     
     def log_in(user)
