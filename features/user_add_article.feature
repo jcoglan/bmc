@@ -19,6 +19,17 @@ Feature: Users can add articles
     When I press "Save"
     Then I should see "Viewing article: Big bang goes phut as bird drops baguette into Cern machinery"
   
+  Scenario: Adding an article from a new source
+    Given I am on the new article page
+    And I fill in "URL" with "http://www.timesonline.co.uk/tol/news/politics/article6906914.ece"
+    And I press "Submit"
+    Then I should see "Edit article: Science Minister renews attack over adviser's sacking"
+    When I choose "Other"
+    And I fill in "Source" with "The Times"
+    When I press "Save"
+    Then I should see "Viewing article: Science Minister renews attack over adviser's sacking"
+    And I should see "From The Times, posted by you" within ".attribution"
+  
   Scenario Outline: Adding an article from a registered source
     Given there is a Source called "The Daily Mail" with domain "dailymail.co.uk"
     And there is a Source called "Mail on Sunday" with domain "dailymail.co.uk"
