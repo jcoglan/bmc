@@ -20,6 +20,8 @@ class ArticlesController < ApplicationController
       @source = Source.create(params[:source])
       @source.associate_with_domain(@article.url)
       @article.source = @source
+    else
+      @article.source = Source.find_by_id(@article.source_id)
     end
     
     return unless @article.save

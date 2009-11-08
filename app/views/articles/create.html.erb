@@ -2,32 +2,32 @@
 
 <% form_for @article do |form| %>
   <div class="sources">
-    <% unless @sources.empty? -%>
-      <% fields_for @article do |f| -%>
+    <% unless @sources.empty? %>
+      <% fields_for @article do |a| %>
         <ul>
-          <% @sources.each_with_index do |source, i| -%>
+          <% @sources.each do |source| %>
             <li>
-              <%= f.radio_button :source_id, source.id, :checked => i.zero? %>
-              <%= f.label "source_id_#{source.id}", h(source.name) %>
+              <%= a.radio_button :source_id, source.id %>
+              <%= a.label "source_id_#{source.id}", h(source.name) %>
             </li>
           <% end %>
           <li>
-            <%= f.radio_button :source_id, "other" %>
-            <%= f.label "source_id_other", "Other" %>
+            <%= a.radio_button :source_id, "other" %>
+            <%= a.label "source_id_other", "Other" %>
           </li>
         </ul>
-      <% end -%>
-    <% end -%>
+      <% end %>
+    <% end %>
     
-    <% fields_for @source do |f| -%>
-      <%= f.label :name, "Source" %>
-      <%= f.text_field :name %>
+    <% fields_for @source do |s| %>
+      <%= s.label :name, "Source" %>
+      <%= s.text_field :name %>
     <% end %>
   </div>
   
-  <% fields_for @article do |f| -%>
-    <%= f.hidden_field :url %>
+  <% fields_for @article do |a| %>
+    <%= a.hidden_field :url %>
     <%= submit_tag "Save" %>
-  <% end -%>
+  <% end %>
 <% end %>
 
