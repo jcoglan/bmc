@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
   
+  belongs_to :user
+  
   def self.from_url(url)
     existing = find_by_url(url)
     return existing if existing
